@@ -87,3 +87,6 @@ def elevate(show_console=True, graphical=True):
 
     CloseHandle(handle)
     sys.exit(ret.value)
+
+def is_admin():
+    return(bool(windll.shell32.IsUserAnAdmin())
