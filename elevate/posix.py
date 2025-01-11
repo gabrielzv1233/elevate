@@ -52,3 +52,6 @@ def elevate(show_console=True, graphical=True):
         except OSError as e:
             if e.errno != errno.ENOENT or args[0] == "sudo":
                 raise
+
+def is_root():
+    return not bool(os.getuid())
