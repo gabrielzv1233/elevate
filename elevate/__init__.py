@@ -21,3 +21,16 @@ def elevate(show_console=True, graphical=True):
         from elevate.posix import elevate
     elevate(show_console, graphical)
 
+def elevated():
+    """
+    Checks if the process is elevated
+
+    If the process is elevated returns True
+    """
+    if sys.platform.startswith("win"):
+        from elevate.windows import is_admin
+        return is_admin()
+    else:
+        from elevate.posix import is_root
+        return is_root()
+    
