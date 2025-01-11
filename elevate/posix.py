@@ -22,6 +22,13 @@ def quote_applescript(string):
     return '"%s"' % "".join(charmap.get(char, char) for char in string)
 
 
+def is_root():
+    if os.getuid() == 0:
+        return True
+    else:
+        return False
+
+
 def elevate(show_console=True, graphical=True):
     if os.getuid() == 0:
         return
